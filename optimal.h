@@ -1,14 +1,12 @@
 #ifndef __OPTIMAL_H__
 #define __OPTIMAL_H__
 
-class opt {
+#include "common.h"
+#include <vector>
 
-	float bestx;
-	float minError;
-	int polarity;
-};
+using namespace std;
 
-void optimal(opt &ret, vector<vector<float>> mydata, vector<float> weights);
+void optimal(opt &ret, vector<vector<float>>& mydata, vector<float>& weights);
 
 void _sort(vector<float> &data, vector<int> &index);
 

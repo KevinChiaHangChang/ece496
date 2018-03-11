@@ -1,8 +1,11 @@
+#include <iostream>
+#include <algorithm>
+
 #include "optimal.h"
 
 using namespace std;
 
-void optimal(opt &ret, vector<vector<float>> mydata, vector<float> weights) {
+void optimal(opt &ret, vector<vector<float>>& mydata, vector<float>& weights) {
 
 	vector<float> data = mydata[0];
 	vector<int> index(data.size());

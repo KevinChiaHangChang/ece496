@@ -12,7 +12,7 @@ using namespace std;
 const char* face_filenames[] = {"1.pgm","2.pgm","3.pgm","4.pgm","5.pgm","6.pgm","7.pgm","8.pgm","9.pgm","10.pgm"};
 const char* non_face_filenames[] = {"1.png","2.png","3.png","4.png","5.png","6.png","7.png","8.png","9.png","10.png"};
 
-void data_gen(vector<data>& face_data, vector<data>& non_face_data, const xf::Mat<int16_t> A) {
+void data_gen(vector<vector<int>>& face_data, vector<vector<int>>& non_face_data, const xf::Mat<int> A) {
 
 	// iterate over face images
 	for (int i = 0; i < 10; i++) {
@@ -43,9 +43,9 @@ void data_gen(vector<data>& face_data, vector<data>& non_face_data, const xf::Ma
 		xf::meanStdDev(integral,&mean,&stddev);
 
 		// update face_data
-		face_data[i].avg = mean;
-		face_data[i].target = 1;
-		face_data[i].polarity = 1;
+		face_data[0][i] = (int) mean;
+		face_data[1][i] = 1;
+		face_data[2][i] = 1;
 
 	}
 
@@ -78,8 +78,8 @@ void data_gen(vector<data>& face_data, vector<data>& non_face_data, const xf::Ma
 		xf::meanStdDev(integral,&mean,&stddev);
 
 		// update face_data
-		non_face_data[i].avg = mean;
-		non_face_data[i].target = 1;
-		non_face_data[i].polarity = 1;
+		non_face_data[0][i] = (int) mean;
+		non_face_data[1][i] = 1;
+		non_face_data[2][i] = 1;
 	}
 }
