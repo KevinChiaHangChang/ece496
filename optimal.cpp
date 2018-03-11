@@ -1,3 +1,5 @@
+#include <iostream>
+#include <algorithm>
 #include "optimal.h"
 
 using namespace std;
