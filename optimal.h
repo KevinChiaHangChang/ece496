@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void optimal(opt &ret, vector<vector<float>> mydata, vector<float> weights);
+void optimal(opt &ret, vector<vector<float>>& mydata, vector<float>& weights);
 
 void _sort(vector<float> &data, vector<int> &index);
 
