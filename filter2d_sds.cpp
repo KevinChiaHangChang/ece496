@@ -161,16 +161,16 @@ void filter2d_sds(unsigned short *frm_data_in, unsigned short *frm_data_out,
 
 // haar feature extraction matrices
 
-xf::Mat A0 = (Mat_<float>(6,3) << -1,-1,-1,/**/-1,-1,-1,/**/-1,-1,-1,/**/1,1,1,/**/1,1,1,/**/1,1,1);
-xf::Mat A1 = (Mat_<float>(6,6) << -1,-1,-1,-1,-1,-1,/**/-1,-1,-1,-1,-1,-1,/**/-1,-1,-1,-1,-1,-1,/**/1,1,1,1,1,1,/**/1,1,1,1,1,1,/**/1,1,1,1,1,1);
-xf::Mat A2 = (Mat_<float>(6,9) << -1,-1,-1,-1,-1,-1,-1,-1,-1,/**/-1,-1,-1,-1,-1,-1,-1,-1,-1,/**/-1,-1,-1,-1,-1,-1,-1,-1,-1,/**/1,1,1,1,1,1,1,1,1,/**/1,1,1,1,1,1,1,1,1,/**/1,1,1,1,1,1,1,1,1);
-xf::Mat A3 = (Mat_<float>(8,4) << -1,-1,1,1,/**/-1,-1,1,1,/**/-1,-1,1,1,/**/-1,-1,1,1,/**/-1,-1,1,1,/**/-1,-1,1,1,/**/-1,-1,1,1,/**/-1,-1,1,1,/**/-1,-1,1,1);
-xf::Mat A4 = (Mat_<float>(8,6) << -1,-1,-1,1,1,1,/**/-1,-1,-1,1,1,1,/**/-1,-1,-1,1,1,1,/**/-1,-1,-1,1,1,1,/**/-1,-1,-1,1,1,1,/**/-1,-1,-1,1,1,1,/**/-1,-1,-1,1,1,1,/**/-1,-1,-1,1,1,1);
-xf::Mat A5 = (Mat_<float>(8,4) << -1,-1,-1,-1,/**/-1,-1,-1,-1,/**/-1,-1,-1,-1,/**/-1,-1,-1,-1,/**/-1,-1,-1,-1,/**/1,1,1,1,/**/1,1,1,1,/**/1,1,1,1,/**/1,1,1,1);
-xf::Mat A6 = (Mat_<float>(8,4) << 1,-1,-1,1,/**/1,-1,-1,1,/**/1,-1,-1,1,/**/1,-1,-1,1,/**/1,-1,-1,1,/**/1,-1,-1,1,/**/1,-1,-1,1,/**/1,-1,-1,1);
-xf::Mat A7 = (Mat_<float>(8,6) << 1,1,-1,-1,1,1,/**/1,1,-1,-1,1,1,/**/1,1,-1,-1,1,1,/**/1,1,-1,-1,1,1,/**/1,1,-1,-1,1,1,/**/1,1,-1,-1,1,1,/**/1,1,-1,-1,1,1,/**/1,1,-1,-1,1,1);
-xf::Mat A8 = (Mat_<float>(8,7) << 1,1,-1,-1,-1,1,1,/**/1,1,-1,-1,-1,1,1,/**/1,1,-1,-1,-1,1,1,/**/1,1,-1,-1,-1,1,1,/**/1,1,-1,-1,-1,1,1,/**/1,1,-1,-1,-1,1,1,/**/1,1,-1,-1,-1,1,1);
-xf::Mat A9 = (Mat_<float>(8,9) << 1,1,1,-1,-1,-1,1,1,1,/**/1,1,1,-1,-1,-1,1,1,1,/**/1,1,1,-1,-1,-1,1,1,1,/**/1,1,1,-1,-1,-1,1,1,1,/**/1,1,1,-1,-1,-1,1,1,1,/**/1,1,1,-1,-1,-1,1,1,1,/**/1,1,1,-1,-1,-1,1,1,1,/**/1,1,1,-1,-1,-1,1,1,1);
+xf::Mat A0 = (xf::Mat_<float>(6,3) << -1,-1,-1,/**/-1,-1,-1,/**/-1,-1,-1,/**/1,1,1,/**/1,1,1,/**/1,1,1);
+xf::Mat A1 = (xf::Mat_<float>(6,6) << -1,-1,-1,-1,-1,-1,/**/-1,-1,-1,-1,-1,-1,/**/-1,-1,-1,-1,-1,-1,/**/1,1,1,1,1,1,/**/1,1,1,1,1,1,/**/1,1,1,1,1,1);
+xf::Mat A2 = (xf::Mat_<float>(6,9) << -1,-1,-1,-1,-1,-1,-1,-1,-1,/**/-1,-1,-1,-1,-1,-1,-1,-1,-1,/**/-1,-1,-1,-1,-1,-1,-1,-1,-1,/**/1,1,1,1,1,1,1,1,1,/**/1,1,1,1,1,1,1,1,1,/**/1,1,1,1,1,1,1,1,1);
+xf::Mat A3 = (xf::Mat_<float>(8,4) << -1,-1,1,1,/**/-1,-1,1,1,/**/-1,-1,1,1,/**/-1,-1,1,1,/**/-1,-1,1,1,/**/-1,-1,1,1,/**/-1,-1,1,1,/**/-1,-1,1,1,/**/-1,-1,1,1);
+xf::Mat A4 = (xf::Mat_<float>(8,6) << -1,-1,-1,1,1,1,/**/-1,-1,-1,1,1,1,/**/-1,-1,-1,1,1,1,/**/-1,-1,-1,1,1,1,/**/-1,-1,-1,1,1,1,/**/-1,-1,-1,1,1,1,/**/-1,-1,-1,1,1,1,/**/-1,-1,-1,1,1,1);
+xf::Mat A5 = (xf::Mat_<float>(8,4) << -1,-1,-1,-1,/**/-1,-1,-1,-1,/**/-1,-1,-1,-1,/**/-1,-1,-1,-1,/**/-1,-1,-1,-1,/**/1,1,1,1,/**/1,1,1,1,/**/1,1,1,1,/**/1,1,1,1);
+xf::Mat A6 = (xf::Mat_<float>(8,4) << 1,-1,-1,1,/**/1,-1,-1,1,/**/1,-1,-1,1,/**/1,-1,-1,1,/**/1,-1,-1,1,/**/1,-1,-1,1,/**/1,-1,-1,1,/**/1,-1,-1,1);
+xf::Mat A7 = (xf::Mat_<float>(8,6) << 1,1,-1,-1,1,1,/**/1,1,-1,-1,1,1,/**/1,1,-1,-1,1,1,/**/1,1,-1,-1,1,1,/**/1,1,-1,-1,1,1,/**/1,1,-1,-1,1,1,/**/1,1,-1,-1,1,1,/**/1,1,-1,-1,1,1);
+xf::Mat A8 = (xf::Mat_<float>(8,7) << 1,1,-1,-1,-1,1,1,/**/1,1,-1,-1,-1,1,1,/**/1,1,-1,-1,-1,1,1,/**/1,1,-1,-1,-1,1,1,/**/1,1,-1,-1,-1,1,1,/**/1,1,-1,-1,-1,1,1,/**/1,1,-1,-1,-1,1,1);
+xf::Mat A9 = (xf::Mat_<float>(8,9) << 1,1,1,-1,-1,-1,1,1,1,/**/1,1,1,-1,-1,-1,1,1,1,/**/1,1,1,-1,-1,-1,1,1,1,/**/1,1,1,-1,-1,-1,1,1,1,/**/1,1,1,-1,-1,-1,1,1,1,/**/1,1,1,-1,-1,-1,1,1,1,/**/1,1,1,-1,-1,-1,1,1,1,/**/1,1,1,-1,-1,-1,1,1,1);
 xf::Mat A[NUM_HAAR_FEATURES] = {A0,A1,A2,A3,A4,A5,A6,A7,A8,A9};
 
 // weights
@@ -270,7 +270,89 @@ void adaboost_loop() {
 	}
 }
 
+// vector of first 10 face images + non face images
+const char* face_filenames[] = {"1.pgm","2.pgm","3.pgm","4.pgm","5.pgm","6.pgm","7.pgm","8.pgm","9.pgm","10.pgm"};
+const char* non_face_filenames[] = {"1.png","2.png","3.png","4.png","5.png","6.png","7.png","8.png","9.png","10.png"};
 
+void data_gen(xf::Mat currA) {
+
+	// load data from png
+	// initialize face data
+	xf::Mat face_data = xf::Mat<float>::zeros(NUM_FACES,3);
+	// initialize face target
+	vector<int> face_target(NUM_FACES,1);
+	// initialize non face data
+	xf::Mat non_face_data = xf::Mat<float>::zeros(NUM_NON_FACES,3);
+	vector<int> non_face_target(NUM_NON_FACES,-1);
+
+	// face data
+	// TODO: need to increase number of files after
+	for (int i = 0; i < 10; i++) {
+
+		// load file by filename
+		// TODO
+
+		char filename[] = "face";
+		strcat(filename,face_filenames[i]);
+		// load image
+		xf::Mat img = xf::imread(filename);
+		// resize image
+		xf::Mat resize = xf::Mat<float>::zeros(24,24);
+		xfResize(img,resize);
+		// histogram equilization
+		xf::Mat histeq = xf::Mat<float>::zeros(24,24);
+		xf::xFequalizeHist(resize,histeq);
+		// compute integral image
+		xf::Mat integral = xf::Mat<float>::zeros(24,24);
+		xf::integral(histeq,integral);
+
+		// apply Haar feature filter
+		// TODO
+
+		// compute mean
+		unsigned short mean;
+		unsigned short stddev;
+		xf::xFmeanstd(integral,&mean,&stddev);
+
+		// update mean
+		face_target[i] = mean;
+
+	}
+
+	// non face data
+	// TODO: need to increase number of files after
+	for (int i = 0; i < 10; i++) {
+
+		// load file by filename
+		// TODO
+
+		char filename[] = "nonface";
+		strcat(filename,non_face_filenames[i]);
+		// load image
+		xf::Mat img = xf::imread(filename);
+		// resize image
+		xf::Mat resize = xf::Mat<float>::zeros(24,24);
+		xfResize(img,resize);
+		// histogram equilization
+		xf::Mat histqe = xf::Mat<float>::zeros(24,24);
+		xf::xFequalizeHist(resize,histeq);
+		// compute integral image
+		xf::Mat integral = xf::Mat<float>::zeros(24,24);
+		xf::integral(histeq,integral);
+
+		// apply Haar feature filter
+		// TODO
+
+		// compute mean
+		unsigned short mean;
+		unsigned short stddev;
+		xf::xFmeanstd(integral,&mean,&stddev);
+
+		// update mean
+		face_target[i] = mean;
+	}
+
+}
 
 
 /*void violajones_sds(unsigned short *frm_data_in, unsigned short *frm_data_out,
