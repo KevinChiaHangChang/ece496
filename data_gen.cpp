@@ -32,7 +32,10 @@ const char* non_face_filenames[] = {"1.png","2.png","3.png","4.png","5.png","6.p
 #define NUM_ROWS	24
 #define NUM_COLS	24
 
-void data_gen(std::vector<std::vector<int>>& face_data, std::vector<std::vector<int>>& non_face_data, const std::vector<std::vector<int>>& A) {
+void data_gen(std::vector<std::vector<int>>& face_data, std::vector<std::vector<int>>& non_face_data, const int rows, const int cols, const std::vector<int>& A) {
+
+	// convert input Haar feature vector into cv::Mat
+	cv::Mat haar = cv::Mat(A).reshape(rows,cols);
 
 	// iterate over face images
 	for (int i = 0; i < 10; i++) {
@@ -63,13 +66,14 @@ void data_gen(std::vector<std::vector<int>>& face_data, std::vector<std::vector<
 		cv::integral(histeq,integral);
 
 		// apply Haar feature filter
-		// TODO
+		cv::Mat filter;
+		cv::filter2D(integral,filter,-1,haar);
 
 		// compute mean
 		// unsigned short mean;
 		// unsigned short stddev;
 		// xf::meanStdDev(integral,&mean,&stddev);
-		double mean = cv::mean(integral)[0];
+		double mean = cv::mean(filter)[0];
 
 		// update face_data
 		face_data[0][i] = (int) mean;
@@ -107,13 +111,14 @@ void data_gen(std::vector<std::vector<int>>& face_data, std::vector<std::vector<
 		cv::integral(histeq,integral);
 
 		// apply Haar feature filter
-		// TODO
+		cv::Mat filter;
+		cv::filter2D(integral,filter,-1,haar);
 
 		// compute mean
 		// unsigned short mean;
 		// unsigned short stddev;
 		// xf::meanStdDev(integral,&mean,&stddev);
-		double mean = cv::mean(integral)[0];
+		double mean = cv::mean(filter)[0];
 
 		// update face_data
 		non_face_data[0][i] = (int) mean;

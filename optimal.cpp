@@ -59,7 +59,7 @@ void optimal(opt &ret, vector<vector<int>>& mydata, vector<float>& weights) {
 	ret.polarity = polarity[min_error_idx];
 }
 
-void _sort(vector<float> &data, vector<int> &index) {
+void _sort(vector<int> &data, vector<int> &index) {
 
 	size_t n(0);
 	generate(index.begin(), index.end(), [&]{return n++;});

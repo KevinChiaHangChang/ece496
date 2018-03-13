@@ -12,8 +12,8 @@ typedef struct opt {
 typedef struct data {
 
 	unsigned short avg;
-	signed short target;
-	signed short polarity;
+	int target;
+	int polarity;
 } data;
 
 #endif /* __COMMON_H__ */
