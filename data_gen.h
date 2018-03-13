@@ -16,14 +16,14 @@
 
 using namespace cv;
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+//#ifdef __cplusplus
+//extern "C" {
+//#endif
 
-void data_gen(std::vector<std::vector<int>>& face_data, std::vector<std::vector<int>>& non_face_data, const int rows, const int cols, const std::vector<int>& A);
+void data_gen(std::vector<std::vector<float>>& face_data, std::vector<std::vector<float>>& non_face_data, const int rows, const int cols, const std::vector<int>& A);
 
-#ifdef __cplusplus
-}
-#endif
+//#ifdef __cplusplus
+//}
+//#endif
 
 #endif /* __DATA_GEN_H__ */

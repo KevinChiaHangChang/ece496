@@ -21,9 +21,9 @@
 
 using namespace cv;
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+//#ifdef __cplusplus
+//extern "C" {
+//#endif
 
 // std::vector of first 10 face images + non face images
 const char* face_filenames[] = {"1.pgm","2.pgm","3.pgm","4.pgm","5.pgm","6.pgm","7.pgm","8.pgm","9.pgm","10.pgm"};
@@ -32,7 +32,7 @@ const char* non_face_filenames[] = {"1.png","2.png","3.png","4.png","5.png","6.p
 #define NUM_ROWS	24
 #define NUM_COLS	24
 
-void data_gen(std::vector<std::vector<int>>& face_data, std::vector<std::vector<int>>& non_face_data, const int rows, const int cols, const std::vector<int>& A) {
+void data_gen(std::vector<std::vector<float>>& face_data, std::vector<std::vector<float>>& non_face_data, const int rows, const int cols, const std::vector<int>& A) {
 
 	// convert input Haar feature vector into cv::Mat
 	cv::Mat haar = cv::Mat(A).reshape(rows,cols);
@@ -76,7 +76,7 @@ void data_gen(std::vector<std::vector<int>>& face_data, std::vector<std::vector<
 		double mean = cv::mean(filter)[0];
 
 		// update face_data
-		face_data[0][i] = (int) mean;
+		face_data[0][i] = (float) mean;
 		face_data[1][i] = 1;
 		face_data[2][i] = 1;
 
@@ -121,12 +121,12 @@ void data_gen(std::vector<std::vector<int>>& face_data, std::vector<std::vector<
 		double mean = cv::mean(filter)[0];
 
 		// update face_data
-		non_face_data[0][i] = (int) mean;
+		non_face_data[0][i] = (float) mean;
 		non_face_data[1][i] = 1;
 		non_face_data[2][i] = 1;
 	}
 }
 
-#ifdef __cplusplus
-}
-#endif
+//#ifdef __cplusplus
+//}
+//#endif

@@ -5,9 +5,9 @@
 
 using namespace std;
 
-void optimal(opt &ret, vector<vector<int>>& mydata, vector<float>& weights) {
+void optimal(opt &ret, vector<vector<float>>& mydata, vector<float>& weights) {
 
-	vector<int> data = mydata[0];
+	vector<float> data = mydata[0];
 	vector<int> index(data.size());
 	_sort(data, index);
 
@@ -59,11 +59,11 @@ void optimal(opt &ret, vector<vector<int>>& mydata, vector<float>& weights) {
 	ret.polarity = polarity[min_error_idx];
 }
 
-void _sort(vector<int> &data, vector<int> &index) {
+void _sort(vector<float> &data, vector<int> &index) {
 
 	size_t n(0);
 	generate(index.begin(), index.end(), [&]{return n++;});
-	sort(index.begin(), index.end(), [&](int a, int b){return data[a] < data[b];});
+	sort(index.begin(), index.end(), [&](int a, int b){return data[a] <= data[b];});
 	sort(data.begin(), data.end());
 }
 

@@ -7,8 +7,8 @@ using namespace std;
 
 void adaboost();
 
-void _update_weights(	const vector<vector<int>>& face_data,
-						const vector<vector<int>>& non_face_data,
+void _update_weights(	const vector<vector<float>>& face_data,
+						const vector<vector<float>>& non_face_data,
 						vector<float>& face_weights,
 						vector<float>& non_face_weights,
 						const float& theta,

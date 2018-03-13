@@ -6,9 +6,9 @@
 
 using namespace std;
 
-void optimal(opt &ret, vector<vector<int>>& mydata, vector<float>& weights);
+void optimal(opt &ret, vector<vector<float>>& mydata, vector<float>& weights);
 
-void _sort(vector<int> &data, vector<int> &index);
+void _sort(vector<float> &data, vector<int> &index);
 
 void _find(const vector<int> &y, vector<int> &total_pos_idx, vector<int> &total_neg_idx);
 

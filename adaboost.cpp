@@ -202,12 +202,12 @@ void adaboost() {
 		for (int j = 0; j < NUM_HAAR_FEATURES; j++) {
 
 			// generate data
-			vector<vector<int>> face_data(NUM_FACES,vector<int>(3));
-			vector<vector<int>> non_face_data(NUM_NON_FACES,vector<int>(3));
+			vector<vector<float>> face_data(3,vector<float>(NUM_FACES));
+			vector<vector<float>> non_face_data(3,vector<float>(NUM_NON_FACES));
 			data_gen(face_data,non_face_data,rows[j],cols[j],A[j]);
 
 			// find minimum error, threshold, polarity
-			vector<vector<int>> my_data = face_data;
+			vector<vector<float>> my_data = face_data;
 			my_data[0].insert(face_data[0].end(),non_face_data[0].begin(),non_face_data[0].end());
 			my_data[1].insert(face_data[1].end(),non_face_data[1].begin(),non_face_data[1].end());
 			my_data[2].insert(face_data[2].end(),non_face_data[2].begin(),non_face_data[2].end());
@@ -236,8 +236,8 @@ void adaboost() {
 		float alpha = log(1/classifier_beta);
 
 		// update weights of misclassified points
-		vector<vector<int>> best_face_data(3,vector<int>(NUM_FACES));
-		vector<vector<int>> best_non_face_data(3,vector<int>(NUM_NON_FACES));
+		vector<vector<float>> best_face_data(3,vector<float>(NUM_FACES));
+		vector<vector<float>> best_non_face_data(3,vector<float>(NUM_NON_FACES));
 		data_gen(best_face_data,best_non_face_data,rows[min_idx],cols[min_idx],A[min_idx]);
 
 		_update_weights(best_face_data,best_non_face_data,face_weights,non_face_weights,theta,classifier_beta,classifier_polarity);
@@ -246,7 +246,7 @@ void adaboost() {
 
 }
 
-void _update_weights(const vector<vector<int>>& face_data, const vector<vector<int>>& non_face_data, vector<float>& face_weights, vector<float>& non_face_weights, const float& theta, const float& classifier_beta, const int& classifier_polarity) {
+void _update_weights(const vector<vector<float>>& face_data, const vector<vector<float>>& non_face_data, vector<float>& face_weights, vector<float>& non_face_weights, const float& theta, const float& classifier_beta, const int& classifier_polarity) {
 
 	// update face weights
 	for (int i = 0; i < face_data.size(); i++) {
