@@ -7,7 +7,7 @@ using namespace std;
 
 void optimal(opt &ret, vector<vector<int>>& mydata, vector<float>& weights) {
 
-	vector<float> data = mydata[0];
+	vector<int> data = mydata[0];
 	vector<int> index(data.size());
 	_sort(data, index);
 
