@@ -1,7 +1,7 @@
 #ifndef __ADABOOST_H__
 #define __ADABOOST_H__
 
-#include "common.h"
+#include <vector>
 
 using namespace std;
 
@@ -15,7 +15,7 @@ void _update_weights(	const vector<vector<int>>& face_data,
 						const float& classifier_beta,
 						const int& classifier_polarity	);
 
-void normalize_weights(vector<float>& weights);
+void _normalize_weights(vector<float>& weights);
 
 int _find_min_idx(const vector<float>& error);
 

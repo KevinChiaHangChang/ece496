@@ -1,12 +1,12 @@
 #ifndef __OPTIMAL_H__
 #define __OPTIMAL_H__
 
-#include "common.h"
 #include <vector>
+#include "common.h"
 
 using namespace std;
 
-void optimal(opt &ret, vector<vector<float>>& mydata, vector<float>& weights);
+void optimal(opt &ret, vector<vector<int>>& mydata, vector<float>& weights);
 
 void _sort(vector<float> &data, vector<int> &index);
 
