@@ -1,8 +1,9 @@
 #ifndef __ADABOOST_H__
 #define __ADABOOST_H__
 
-#include "common_data.h"
 #include <vector>
+
+#include "common_data.h"
 
 using namespace std;
 

@@ -1,23 +1,20 @@
 #include <common/xf_common.h>
 #include <algorithm>
 #include <iterator>
-#include <fstream>
 
 #include "adaboost.h"
 #include "data_gen.h"
 #include "optimal.h"
-// #include "common.h"
 
 using namespace std;
 
 // for now, use only 10 faces + non-faces
-// #define NUM_FACES			200
-// #define NUM_NON_FACES		400
-#define NUM_FACES			10
-#define NUM_NON_FACES		10
+#define NUM_FACES			200
+#define NUM_NON_FACES		400
+// #define NUM_FACES			10
+// #define NUM_NON_FACES		10
 #define NUM_HAAR_FEATURES	10
-// #define NUM_CASCADES		3
-#define NUM_CASCADES		1
+#define NUM_CASCADES		3
 
 // define Haar feature matrices
 //xf::Mat<int> A0 = (xf::Mat<int,6,3> << -1,-1,-1,/**/-1,-1,-1,/**/-1,-1,-1,/**/1,1,1,/**/1,1,1,/**/1,1,1);
@@ -184,8 +181,8 @@ vector<int> cols = {3,6,9,4,6,4,4,6,7,9};
 void adaboost() {
 
 	// initialize weights
-	vector<float> face_weights(NUM_FACES,1/(2*NUM_FACES));
-	vector<float> non_face_weights(NUM_NON_FACES,1/(2*NUM_NON_FACES));
+	std::vector<float> face_weights(NUM_FACES,1/(2*NUM_FACES));
+	std::vector<float> non_face_weights(NUM_NON_FACES,1/(2*NUM_NON_FACES));
 
 	// main loop
 	for (int i = 0; i < NUM_CASCADES; i++){
@@ -206,7 +203,7 @@ void adaboost() {
 			// generate data
 			vector<vector<float>> face_data(3,vector<float>(NUM_FACES));
 			vector<vector<float>> non_face_data(3,vector<float>(NUM_NON_FACES));
-			// data_gen(face_data,non_face_data,rows[j],cols[j],A[j]);
+			data_gen(face_data,non_face_data,rows[j],cols[j],A[j]);
 
 			// find minimum error, threshold, polarity
 			vector<vector<float>> my_data = face_data;
@@ -240,17 +237,11 @@ void adaboost() {
 		// update weights of misclassified points
 		vector<vector<float>> best_face_data(3,vector<float>(NUM_FACES));
 		vector<vector<float>> best_non_face_data(3,vector<float>(NUM_NON_FACES));
-		// data_gen(best_face_data,best_non_face_data,rows[min_idx],cols[min_idx],A[min_idx]);
+		data_gen(best_face_data,best_non_face_data,rows[min_idx],cols[min_idx],A[min_idx]);
 
 		_update_weights(best_face_data,best_non_face_data,face_weights,non_face_weights,theta,classifier_beta,classifier_polarity);
 
 	}
-
-	ofstream weights_file("weights.txt", ofstream::out | ofstream::app);
-	for (int i = 0; i < NUM_FACES; i++) {
-		weights_file << " Weight " << i << ": " << face_weights[i] << endl;
-	}
-	weights_file.close();
 
 }
 

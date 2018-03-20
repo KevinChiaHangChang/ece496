@@ -1,8 +1,8 @@
 #ifndef __OPTIMAL_H__
 #define __OPTIMAL_H__
 
-#include "common_data.h"
 #include <vector>
+#include "common_data.h"
 
 using namespace std;
 
