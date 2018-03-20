@@ -1,6 +1,7 @@
 #include <common/xf_common.h>
 #include <algorithm>
 #include <iterator>
+#include <fstream>
 
 #include "adaboost.h"
 #include "data_gen.h"
@@ -15,7 +16,8 @@ using namespace std;
 #define NUM_FACES			10
 #define NUM_NON_FACES		10
 #define NUM_HAAR_FEATURES	10
-#define NUM_CASCADES		3
+// #define NUM_CASCADES		3
+#define NUM_CASCADES		1
 
 // define Haar feature matrices
 //xf::Mat<int> A0 = (xf::Mat<int,6,3> << -1,-1,-1,/**/-1,-1,-1,/**/-1,-1,-1,/**/1,1,1,/**/1,1,1,/**/1,1,1);
@@ -182,8 +184,8 @@ vector<int> cols = {3,6,9,4,6,4,4,6,7,9};
 void adaboost() {
 
 	// initialize weights
-	std::vector<float> face_weights(NUM_FACES,1/(2*NUM_FACES));
-	std::vector<float> non_face_weights(NUM_NON_FACES,1/(2*NUM_NON_FACES));
+	vector<float> face_weights(NUM_FACES,1/(2*NUM_FACES));
+	vector<float> non_face_weights(NUM_NON_FACES,1/(2*NUM_NON_FACES));
 
 	// main loop
 	for (int i = 0; i < NUM_CASCADES; i++){
@@ -243,6 +245,12 @@ void adaboost() {
 		_update_weights(best_face_data,best_non_face_data,face_weights,non_face_weights,theta,classifier_beta,classifier_polarity);
 
 	}
+
+	ofstream weights_file("weights.txt", ofstream::out | ofstream::app);
+	for (int i = 0; i < NUM_FACES; i++) {
+		weights_file << " Weight " << i << ": " << face_weights[i] << endl;
+	}
+	weights_file.close();
 
 }
 
