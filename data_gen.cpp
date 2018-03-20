@@ -1,4 +1,5 @@
 #include <common/xf_common.h>
+#include <iostream>
 // #include <common/xf_sw_utils.h>
 //#include <imgproc/xf_resize.hpp>
 //#include <imgproc/xf_hist_equalize.hpp>
@@ -35,6 +36,8 @@ void data_gen(std::vector<std::vector<float>>& face_data, std::vector<std::vecto
 		// xf::Mat<XF_8UC1,NUM_ROWS,NUM_COLS,XF_NPPC1> img = xf::imread(filename,XF_NPPC1);
 		cv::Mat myImg(NUM_ROWS, NUM_COLS, CV_8SC1);
 		myImg = cv::imread(filename_str,1);
+		if (myImg.cols == 0)
+			cout << "Error reading file: " << filename_str << endl;
 
 		// resize image
 		// xf::Mat<XF_8UC1,NUM_ROWS,NUM_COLS,XF_NPPC1> resize = xf::Mat<XF_8UC1,NUM_ROWS,NUM_COLS,XF_NPPC1>::zeros(24,24);
