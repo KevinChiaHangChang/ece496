@@ -4,22 +4,10 @@
 //#include <imgproc/xf_hist_equalize.hpp>
 //#include <imgproc/xf_integral_image.hpp>
 //#include <core/xf_mean_stddev.hpp>
-#ifdef __SDSCC__
-#undef __ARM_NEON__
-#undef __ARM_NEON
-#include <opencv2/core.hpp>
-#include <opencv2/imgproc.hpp>
-#include <opencv2/highgui.hpp>
-#define __ARM_NEON__
-#define __ARM_NEON
-#else
-#endif
-
-#include <vector>
 
 #include "data_gen.h"
 
-using namespace cv;
+using namespace std;
 
 //#ifdef __cplusplus
 //extern "C" {
@@ -43,9 +31,10 @@ void data_gen(std::vector<std::vector<float>>& face_data, std::vector<std::vecto
 		// load image by filename
 		char filename[] = "face/";
 		strcat(filename,face_filenames[i]);
+		std::string filename_str = filename;
 		// xf::Mat<XF_8UC1,NUM_ROWS,NUM_COLS,XF_NPPC1> img = xf::imread(filename,XF_NPPC1);
 		cv::Mat myImg(NUM_ROWS, NUM_COLS, CV_8SC1);
-		myImg = cv::imread(filename);
+		myImg = cv::imread(filename_str,1);
 
 		// resize image
 		// xf::Mat<XF_8UC1,NUM_ROWS,NUM_COLS,XF_NPPC1> resize = xf::Mat<XF_8UC1,NUM_ROWS,NUM_COLS,XF_NPPC1>::zeros(24,24);
@@ -88,15 +77,16 @@ void data_gen(std::vector<std::vector<float>>& face_data, std::vector<std::vecto
 		// load image by filename
 		char filename[] = "nonface/";
 		strcat(filename,non_face_filenames[i]);
+		std::string filename_str = filename;
 		// xf::Mat<XF_8UC1,NUM_ROWS,NUM_COLS,XF_NPPC1> img = xf::imread(filename,XF_NPPC1);
 		cv::Mat myImg(NUM_ROWS, NUM_COLS, CV_8SC1);
-		myImg = cv::imread(filename);
+		myImg = cv::imread(filename_str,1);
 
 		// resize image
 		// xf::Mat<XF_8UC1,NUM_ROWS,NUM_COLS,XF_NPPC1> resize = xf::Mat<XF_8UC1,NUM_ROWS,NUM_COLS,XF_NPPC1>::zeros(24,24);
 		// xf::resize(img,resize);
 		cv::Mat resized;
-		cv::resize(myImg,resized,Size(NUM_ROWS,NUM_COLS));
+		cv::resize(myImg,resized,cv::Size(NUM_ROWS,NUM_COLS));
 
 		// histogram equalization
 		// xf::Mat<XF_8UC1,NUM_ROWS,NUM_COLS,XF_NPPC1> histeq = xf::Mat<XF_8UC1,NUM_ROWS,NUM_COLS,XF_NPPC1>::zeros(24,24);

@@ -5,7 +5,7 @@
 #include "adaboost.h"
 #include "data_gen.h"
 #include "optimal.h"
-#include "common.h"
+// #include "common.h"
 
 using namespace std;
 
@@ -204,7 +204,7 @@ void adaboost() {
 			// generate data
 			vector<vector<float>> face_data(3,vector<float>(NUM_FACES));
 			vector<vector<float>> non_face_data(3,vector<float>(NUM_NON_FACES));
-			data_gen(face_data,non_face_data,rows[j],cols[j],A[j]);
+			// data_gen(face_data,non_face_data,rows[j],cols[j],A[j]);
 
 			// find minimum error, threshold, polarity
 			vector<vector<float>> my_data = face_data;
@@ -238,7 +238,7 @@ void adaboost() {
 		// update weights of misclassified points
 		vector<vector<float>> best_face_data(3,vector<float>(NUM_FACES));
 		vector<vector<float>> best_non_face_data(3,vector<float>(NUM_NON_FACES));
-		data_gen(best_face_data,best_non_face_data,rows[min_idx],cols[min_idx],A[min_idx]);
+		// data_gen(best_face_data,best_non_face_data,rows[min_idx],cols[min_idx],A[min_idx]);
 
 		_update_weights(best_face_data,best_non_face_data,face_weights,non_face_weights,theta,classifier_beta,classifier_polarity);
 

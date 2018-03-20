@@ -6,15 +6,15 @@
 #undef __ARM_NEON
 #include <opencv2/core.hpp>
 #include <opencv2/imgproc.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgcodecs.hpp>
 #define __ARM_NEON__
 #define __ARM_NEON
 #else
 #endif
 #include <vector>
 
-#include "common.h"
-
-using namespace cv;
+using namespace std;
 
 //#ifdef __cplusplus
 //extern "C" {
